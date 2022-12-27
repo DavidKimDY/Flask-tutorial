@@ -13,4 +13,9 @@ def you():
     return "<p>Hello, You!</p>"
 
 
+@app.route("/<name>/")
+def name(name):
+    return f"<p>Hello, {name}!</p>"
+
+
 app.run(debug=True, port=5002, host="0.0.0.0")
