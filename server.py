@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -16,6 +16,11 @@ def you():
 @app.route("/<name>/")
 def name(name):
     return f"<p>Hello, {name}!</p>"
+
+
+@app.route("/login/")
+def login():
+    return render_template("login.html")
 
 
 app.run(debug=True, port=5002, host="0.0.0.0")
