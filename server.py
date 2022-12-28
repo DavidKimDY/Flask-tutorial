@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -8,18 +8,11 @@ def index():
     return "<p>Hello, World!</p>"
 
 
-@app.route("/you/")
-def you():
-    return "<p>Hello, You!</p>"
-
-
-@app.route("/<name>/")
-def name(name):
-    return f"<p>Hello, {name}!</p>"
-
-
-@app.route("/login/")
+@app.route("/login/", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        if request.form["username"] == "dy" and request.form["password"] == "1234":
+            return "Login success"
     return render_template("login.html")
 
 
