@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import sqlite3 as sql
 
 app = Flask(__name__)
 
@@ -11,8 +12,23 @@ def index():
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        if request.form["username"] == "dy" and request.form["password"] == "1234":
-            return "Login success"
+        with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute(
+                "select * from users where name = ?", [request.form["username"]]
+            )
+            result = cur.fetchall()
+            # result는 [(username, password)] 모양.
+            # 만약 조건의 데이터가 없으면 []
+            if result == []:
+                return "There is No user"
+            else:
+                username, password = result[0]
+
+            if password == request.form["password"]:
+                return "Login success"
+            else:
+                return "Wrong password"
     return render_template("login.html")
 
 
