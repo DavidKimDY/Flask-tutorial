@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<p>Hello, World!</p>"
+    return render_template("home.html")
 
 
-@app.route("/login/", methods=["GET", "POST"])
-def login():
+@app.route("/signin/", methods=["GET", "POST"])
+def signin():
     if request.method == "POST":
         with sql.connect("database.db") as con:
             cur = con.cursor()
@@ -29,7 +29,13 @@ def login():
                 return "Login success"
             else:
                 return "Wrong password"
-    return render_template("login.html")
+    return render_template("signin.html")
+
+
+@app.route("/signup/", methods=["GET", "POST"])
+def signup():
+
+    return render_template("signup.html")
 
 
 app.run(debug=True, port=5002, host="0.0.0.0")
