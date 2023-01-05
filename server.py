@@ -34,7 +34,15 @@ def signin():
 
 @app.route("/signup/", methods=["GET", "POST"])
 def signup():
-
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute(
+                "insert into users (name, password) values (?, ?)",
+                [username, password],
+            )
     return render_template("signup.html")
 
 
