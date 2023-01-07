@@ -10,6 +10,9 @@
 		<div class="row justify-content-center">
 			<div class="col-6 text-center">
 			<p class="h1 m-5"> 메인페이지 </p>
+                {% if current_user.is_authenticated %}
+                <h3> this is login user : {{current_user.username}} </h3>
+                {% else %}
 				<a href="{{url_for('signin')}}">
 				<button class='btn btn-primary m-3' type="submit">로그인</button>
 				</a>
@@ -17,6 +20,7 @@
 				<a href="{{url_for('signup')}}">
 				<button class='btn btn-success m-3' type="submit">회원가입</button>
 				</a>
+                {% endif %}
 			</div>
 		</div>
 	</div>
