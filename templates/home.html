@@ -11,6 +11,9 @@
 			<div class="col-6 text-center">
 			<p class="h1 m-5"> 메인페이지 </p>
                 {% if current_user.is_authenticated %}
+				<a href="{{url_for('signout')}}">
+				<button class='btn btn-primary m-3' type="submit">로그아웃</button>
+				</a>
                 <h3> this is login user : {{current_user.username}} </h3>
                 {% else %}
 				<a href="{{url_for('signin')}}">

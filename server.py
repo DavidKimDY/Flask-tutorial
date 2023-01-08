@@ -83,7 +83,7 @@ def signin():
             if password == request.form["password"]:
                 user = User(username, password)
                 login_user(user)
-                return "Login success"
+                return redirect(url_for("home"))
             else:
                 return "Wrong password"
     return render_template("signin.html")
