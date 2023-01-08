@@ -19,6 +19,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 login_manager = LoginManager()
+login_manager.login_view = "signin"
 login_manager.init_app(app)
 
 
@@ -101,6 +102,11 @@ def signup():
                 [username, password],
             )
     return render_template("signup.html")
+
+
+@app.route("/feed/", methods=["GET", "POST"])
+def feed():
+    return render_template("feed.html")
 
 
 app.run(debug=True, port=5002, host="0.0.0.0")

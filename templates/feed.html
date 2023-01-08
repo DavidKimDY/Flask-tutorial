@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}피드{% endblock %}
+{% block css %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/feed.css" />
+{% endblock %}
+{% block container %}
+<div class="container">
+<div class="row justify-content-center mt-5" >
+<div class="col-md-10 pt-3" style="  height: 45rem; width: 100%; overflow-y: scroll;">
+
+
+    <div class="social-feed-box">
+        <div class="social-avatar">
+            <a href="" class="pull-left">
+		    <img alt="image" src="{{default_avatar}}">
+            </a>
+            <div class="media-body">
+                <a href="#">
+                    Andrew Williams
+                </a>
+                <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+            </div>
+        </div>
+        <div class="social-body">
+            <p>
+                 Packages and web page editors now use Lorem Ipsum as their
+                default model text. Page editors now use Lorem Ipsum as their
+                default model text.
+            </p>
+            <div class="btn-group">
+                <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
+                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
+                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+            </div>
+        </div>
+        <div class="social-footer">
+
+
+            <div class="social-comment">
+                <a href="" class="pull-left">
+                    <img alt="image" src="{{default_avatar}}">
+                </a>
+                <div class="media-body">
+                    <a href="#">
+                        Andrew Williams
+                    </a>
+                    Making this the first true generator on the Internet. It uses a dictionary of.
+                    <a href="#" class="small"><i class="fa fa-thumbs-up"></i>좋아요!</a> -
+                    <small class="text-muted">10.07.2014</small>
+                </div>
+            </div>
+
+            <div class="social-comment">
+                <div class="media-body">
+                    <textarea class="form-control" placeholder="Write comment..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+{% endblock %}
