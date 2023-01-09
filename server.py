@@ -104,9 +104,24 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route("/feed/", methods=["GET", "POST"])
+@app.route("/feed/", methods=["GET"])
 def feed():
-    return render_template("feed.html")
+    with sql.connect("database.db") as con:
+        cur = con.cursor()
+        cur.execute("select * from feeds")
+        result = cur.fetchall()
+        if result == []:
+            pass
+        else:
+            # data는 id, username, content, created_at 순으로 반환된다.
+            id_, username, content, created_at = result[0]
+
+    return render_template(
+        "feed.html",
+        username=username,
+        content=content,
+        created_at=created_at,
+    )
 
 
 app.run(debug=True, port=5002, host="0.0.0.0")

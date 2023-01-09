@@ -17,18 +17,25 @@
 		    <img alt="image" src="{{default_avatar}}">
             </a>
             <div class="media-body">
-                <a href="#">
+                <!--a href="#">
                     Andrew Williams
+                </a-->
+                <a href="#">
+                    {{username}}
                 </a>
-                <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                <!--small class="text-muted">Today 4:21 pm - 12.06.2014</small-->
+                <small class="text-muted">{{created_at}}</small>
             </div>
         </div>
         <div class="social-body">
             <p>
+                {{content}}
+            </p>
+            <!--p>
                  Packages and web page editors now use Lorem Ipsum as their
                 default model text. Page editors now use Lorem Ipsum as their
                 default model text.
-            </p>
+            </p-->
             <div class="btn-group">
                 <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
                 <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>

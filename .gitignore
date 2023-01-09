@@ -3,3 +3,4 @@
 __pycache__
 *.swp
 database.db
+.DS_Store
