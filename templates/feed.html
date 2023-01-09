@@ -6,45 +6,35 @@
 <link rel="stylesheet" href="/static/css/feed.css" />
 {% endblock %}
 {% block container %}
-<div class="container">
+<div class="container mt-5">
 <div class="row justify-content-center mt-5" >
-<div class="col-md-10 pt-3" style="  height: 45rem; width: 100%; overflow-y: scroll;">
+<div class="col-md-8 pt-3 mt-5" style="  height: 40rem; width: 100%; overflow-y: scroll;">
 
-
+	{% for result in results %}
     <div class="social-feed-box">
         <div class="social-avatar">
             <a href="" class="pull-left">
 		    <img alt="image" src="{{default_avatar}}">
             </a>
             <div class="media-body">
-                <!--a href="#">
-                    Andrew Williams
-                </a-->
                 <a href="#">
-                    {{username}}
+			{{result[1]}}
                 </a>
-                <!--small class="text-muted">Today 4:21 pm - 12.06.2014</small-->
-                <small class="text-muted">{{created_at}}</small>
+                <small class="text-muted">{{result[3]}}</small>
             </div>
         </div>
         <div class="social-body">
             <p>
-                {{content}}
+                {{result[2]}}
             </p>
-            <!--p>
-                 Packages and web page editors now use Lorem Ipsum as their
-                default model text. Page editors now use Lorem Ipsum as their
-                default model text.
-            </p-->
             <div class="btn-group">
                 <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
                 <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
                 <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
             </div>
         </div>
+
         <div class="social-footer">
-
-
             <div class="social-comment">
                 <a href="" class="pull-left">
                     <img alt="image" src="{{default_avatar}}">
@@ -58,7 +48,6 @@
                     <small class="text-muted">10.07.2014</small>
                 </div>
             </div>
-
             <div class="social-comment">
                 <div class="media-body">
                     <textarea class="form-control" placeholder="Write comment..."></textarea>
@@ -66,6 +55,8 @@
             </div>
         </div>
     </div>
+    {% endfor %}
+
 
 </div>
 </div>

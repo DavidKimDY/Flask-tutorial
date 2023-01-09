@@ -109,18 +109,11 @@ def feed():
     with sql.connect("database.db") as con:
         cur = con.cursor()
         cur.execute("select * from feeds")
-        result = cur.fetchall()
-        if result == []:
-            pass
-        else:
-            # data는 id, username, content, created_at 순으로 반환된다.
-            id_, username, content, created_at = result[0]
+        results = cur.fetchall()
 
     return render_template(
         "feed.html",
-        username=username,
-        content=content,
-        created_at=created_at,
+        results=results,
     )
 
 
