@@ -10,6 +10,28 @@
 <div class="row justify-content-center mt-5" >
 <div class="col-md-8 pt-3 mt-5" style="  height: 40rem; width: 100%; overflow-y: scroll;">
 
+   {% if current_user.is_authenticated %}
+    <div class="social-feed-box">
+        <div class="social-avatar">
+            <a href="" class="pull-left">
+		    <img alt="image" src="{{default_avatar}}">
+            </a>
+            <div class="media-body">
+                <a href="#">
+			{{current_user.username}}
+                </a>
+            </div>
+            <small class="text-muted">새로운 글쓰기!</small>
+        </div>
+	<form action="{{url_for('feed')}}" method="POST">
+        <div class="social-body">
+                    <textarea class="form-control" name="content"  placeholder="무슨 생각을 하고 계신가요?"></textarea>
+        <button type="submit" class="btn btn-success btn-sm mt-2">Sign up</button>
+        </div>
+	</form>
+    </div>
+    {% endif %}
+
 	{% for result in results %}
     <div class="social-feed-box">
         <div class="social-avatar">

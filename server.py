@@ -104,8 +104,11 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route("/feed/", methods=["GET"])
+@app.route("/feed/", methods=["GET", "POST"])
 def feed():
+    if request.method == "POST":
+        return request.form["content"]
+
     with sql.connect("database.db") as con:
         cur = con.cursor()
         cur.execute("select * from feeds")
@@ -114,6 +117,7 @@ def feed():
     return render_template(
         "feed.html",
         results=results,
+        current_user=current_user,
     )
 
 
